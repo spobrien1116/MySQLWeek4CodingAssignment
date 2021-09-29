@@ -1,9 +1,9 @@
-package Dao;
+package Dao1;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import Model.Boat;
+import Model1.Boat;
 
 public class SortDao {
     

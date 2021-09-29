@@ -1,10 +1,10 @@
-package Service;
+package Service1;
 
 import java.util.Comparator;
 import java.util.List;
 
-import Model.Boat;
-import Dao.SortDao;
+import Dao1.SortDao;
+import Model1.Boat;
 
 public class SortService {
     
@@ -32,10 +32,13 @@ public class SortService {
         return boats;
     }
 
-    static class MySort implements Comparator<Boat> {
-        @Override
-        public int compare(Boat b1, Boat b2) {
-            return Boat.compareBoats(b1,b2);
-        }
-    }
+    // //This was part of the video, it implements the Comparable interface. Instead, we are instructed
+    // //to create  our own method to compare.
+    // static class MySort implements Comparator<Boat> {
+    //     @Override
+    //     public int compare(Boat b1, Boat b2) {
+    //         return Boat.compareBoats(b1,b2);
+    //     }
+    // }
+
 }
