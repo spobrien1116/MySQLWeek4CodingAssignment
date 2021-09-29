@@ -12,3 +12,5 @@ Incomplete thoughts/potential solution starting points
 
     arrayList.sort((p1, p2) -> p1.compareTo(p2));
     Collections.sort(a, (a1, a2) -> a1.compare(a1, a2));
+
+https://mkyong.com/java8/java-8-lambda-comparator-example/
