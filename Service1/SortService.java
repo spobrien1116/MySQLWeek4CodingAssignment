@@ -1,6 +1,6 @@
 package Service1;
 
-import java.util.Comparator;
+// import java.util.Comparator;
 import java.util.List;
 
 import Dao1.SortDao;
@@ -12,15 +12,16 @@ public class SortService {
 
     public List<Boat> getBoats(SortType type) {
         List<Boat> boats = sortDao.getBoats();
-        Comparator<Boat> comp = null;
+        // Comparator<Boat> comp = null;
 
         switch(type) {
             case LAMBDA:
-            comp = (b1, b2) -> Boat.compareBoats(b1, b2);
+            // comp = (b1, b2) -> Boat.compareBoats(b1, b2);
+            boats.sort((b1, b2) -> Boat.compareBoats(b1, b2));
             break;
             
             case METHOD_REFERENCE:
-                comp = Boat::compareBoats;
+                boats.sort(Boat::compareBoats);
                 break;
             
             default:
@@ -28,7 +29,7 @@ public class SortService {
 
         }
 
-        boats.sort(comp);
+        // boats.sort(comp);
         return boats;
     }
 

@@ -27,7 +27,7 @@ public class MySort {
         switch(type) {
             
             case LAMBDA:
-                boats.forEach(boat -> System.out.println(boat.getBoatName()));
+                boats.forEach(boat -> System.out.println(boat.toString()));
                 break;
             
             case METHOD_REFERENCE:

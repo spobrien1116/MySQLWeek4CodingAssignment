@@ -10,7 +10,7 @@ public class Boat {
 
     @Override
     public String toString() {
-        return boatName;
+        return boatName + ": Boat";
     }
 
     public String getBoatName() {
