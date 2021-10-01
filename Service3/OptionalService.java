@@ -1,15 +1,15 @@
-package Service3;
+// package Service3;
 
-import java.util.NoSuchElementException;
+// import java.util.NoSuchElementException;
 
-import Dao3.OptionalDao;
+// import Dao3.OptionalDao;
 
-public class OptionalService {
+// public class OptionalService {
     
-    private OptionalDao dao = new OptionalDao();
+//     private OptionalDao dao = new OptionalDao();
 
-    public String find(String search) {
-        return dao.find(search).orElseThrow(() -> new NoSuchElementException("Your search of " + search + " is missing."));
-    }
+//     public String find(String search) {
+//         return dao.find(search).orElseThrow(() -> new NoSuchElementException("Your search of " + search + " is missing."));
+//     }
     
-}
+// }

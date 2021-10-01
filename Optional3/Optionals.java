@@ -5,22 +5,22 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.List;
 
-import Service3.OptionalService;
+// import Service3.OptionalService;
 import Model1.Boat;
 import Dao1.SortDao;
 
 public class Optionals {
     
     // private Scanner scanner = new Scanner(System.in);
-    private OptionalService service = new OptionalService();
+    // private OptionalService service = new OptionalService();
     private static SortDao sortDao = new SortDao();
 
     public static void main(String[] args) {
 
         // new Optionals().run();
-        //The below line is my attempt to pass through the List of boats into the optional.
-        //Attempt is not working. Hard stuck here.
-        System.out.println(boatsMethodA(getBoats()));
+        //Calls on boatsMethodB to start the whole program. boatsMethodB then calls on boatsMethodA
+        //with the list of boats, and also as an empty Optional.
+        boatsMethodB();
     }
 
     public static List<Boat> getBoats() {
@@ -51,20 +51,28 @@ public class Optionals {
         // }
     // }
 
-    public Boat boatsMethodA(Optional<Boat> optionalBoat) {
-        //Trying to create a for loop here that will run each String of boat through the service.
-        //Unsucessful so far.
-        for (int i = 0; i < optionalBoat.length() - 1; i++) {
-            String search = optionalBoat[i];
-            try {
-                String found = service.find(search);
-                System.out.println("We found " + found + ". Yay, it works!");
-            }
-            catch (NoSuchElementException e) {
-                System.out.println(e.getMessage());
-            }
+    public static Boat boatsMethodA(Optional<Boat> optionalBoat) {
+        //Tests to see if the boat passed in exists or not. If it is empty, it will throw the
+        //NoSuchElementException custom message.
+        return optionalBoat.orElseThrow(() -> new NoSuchElementException("Your search of " + optionalBoat + " is missing/empty."));
+        
+    }
+
+    public static void boatsMethodB() {
+        //Calls method a with an object wrapped by an Optional. Show that the object is returned unwrapped
+        //from the Optional.
+        List<Boat> boats = sortDao.getBoats();
+        for (int i = 0; i < boats.size(); i++) {
+            System.out.println(boatsMethodA(Optional.of(sortDao.getABoat(i))));
+        }    
+        try {
+            System.out.println(boatsMethodA(Optional.empty()).toString());
+            // String found = boatsMethodA(Optional.empty()).toString();
+            // System.out.println("We found " + found + ". Yay, it works!");
         }
-        return optionalBoat;
+        catch (NoSuchElementException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 }
